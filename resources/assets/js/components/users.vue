@@ -3,8 +3,8 @@
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Email</th>
+          <th @click="orderByName()">Nome</button></th>
+          <th @click="orderByEmail()">Email</th>
         </tr>
       </thead>
       <tbody>
@@ -26,8 +26,18 @@ export default {
     }
   },
 
-  mounted() {
-    this.list = JSON.parse(this.users).sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} )
+  mounted () {
+    this.list = JSON.parse(this.users).sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)})
+  },
+
+  methods: {
+    orderByName () {
+      return this.list.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)})
+    },
+
+    orderByEmail () {
+      return this.list.sort(function(a,b) {return (a.email > b.email) ? 1 : ((b.email > a.email) ? -1 : 0)})
+    }
   }
 }
 </script>
